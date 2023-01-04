@@ -1,0 +1,46 @@
+[package]
+name = "certgen"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#x509-cert = { path = "../../junk/rust_change/formats-tmp/x509-cert", features = ["pem"] }
+#const-oid = { path = "../../junk/rust_change/formats-tmp/const-oid" }
+#der = { path = "../../junk/rust_change/formats-tmp/der" }
+#spki = { path = "../../junk/rust_change/formats-tmp/spki" }
+#pqckeys = { path = "../../junk/rust_change/formats-tmp/pqckeys" }
+#pem-rfc7468 = { path = "../../junk/rust_change/formats-tmp/pem-rfc7468" }
+
+x509-cert = { git = "https://github.com/carl-wallace/formats", branch = "pqc", features = ["pem"] }
+const-oid = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
+der = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
+spki = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
+pqckeys = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
+pem-rfc7468 = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
+
+certval = { path = "../../junk/rust_change/rust-pki-tmp/certval"}
+
+clap = {version = "3.0.7", default-features = false, features=["std", "derive"]}
+subtle-encoding = {version = "0.5", default-features = false, features = ["hex", "alloc"]}
+sha-1 = {version = "0.10.0", default-features = false}
+p256 = {version = "0.11.1", default-features = false, features = ["ecdsa", "ecdsa-core", "pem", "pkcs8"]}
+
+flagset = { version = "0.4.3", package = "flagset" }
+rand_core = { version = "0.6", features = ["std"] }
+names = { version = "0.13.0", default-features = false }
+rand = "0.8.5"
+hex-literal = "0.3.4"
+
+pqcrypto-internals =  {version = "0.2.4", optional = true}
+pqcrypto-dilithium =  {version = "0.4.6", optional = true}
+pqcrypto-falcon = {version = "0.2.10", optional = true}
+pqcrypto-sphincsplus = {version = "0.6.4", optional = true}
+pqcrypto = {version = "0.16.1", optional = true}
+pqcrypto-traits = {version = "0.3.4", optional = true}
+
+[features]
+default = ["pqc"]
+pqc = ["pqcrypto-dilithium", "pqcrypto-falcon", "pqcrypto-sphincsplus", "pqcrypto", "pqcrypto-traits"]
+
