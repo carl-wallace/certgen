@@ -1,9 +1,9 @@
 //! CSR generation
 
-use der::asn1::{BitString, BitStringRef};
-use der::{Any, AnyRef, Decode, Encode, Result};
+use der::asn1::BitString;
+use der::{Any, Decode, Encode, Result};
 
-use spki::{AlgorithmIdentifier, AlgorithmIdentifierOwned, SubjectPublicKeyInfo};
+use spki::{AlgorithmIdentifierOwned, SubjectPublicKeyInfo};
 
 use x509_cert::attr::{Attribute, Attributes};
 use x509_cert::request::*;
@@ -21,7 +21,7 @@ pub fn generate_csr(
     extensions: Option<Extensions>,
     cp: &CompositeParts,
 ) -> Result<Vec<u8>> {
-    let spki_ar = SubjectPublicKeyInfo::<AnyRef<'_>, BitStringRef<'_>>::from_der(spkibuf).unwrap();
+    let spki = SubjectPublicKeyInfo::<Any, BitString>::from_der(spkibuf).unwrap();
 
     let mut attributes = Attributes::new();
     let mut er_attr = Attribute {
@@ -37,7 +37,7 @@ pub fn generate_csr(
     let info = CertReqInfo {
         version: x509_cert::request::Version::V1,
         subject: subject.clone(),
-        public_key: spki_ar,
+        public_key: spki,
         attributes,
     };
 
@@ -47,8 +47,8 @@ pub fn generate_csr(
     };
 
     let spki_alg1 = AlgorithmIdentifierOwned::from_der(&cp.spki_algs[0]).unwrap();
-    let signing_alg_last_ar =
-        AlgorithmIdentifier::<AnyRef<'_>>::from_der(cp.signing_algs.last().unwrap()).unwrap();
+    let signing_alg_last =
+        AlgorithmIdentifierOwned::from_der(cp.signing_algs.last().unwrap()).unwrap();
 
     let s = if cp.signing_keys.len() > 1 {
         let spki_alg2 = AlgorithmIdentifierOwned::from_der(&cp.spki_algs[1]).unwrap();
@@ -79,7 +79,7 @@ pub fn generate_csr(
 
     let c = CertReq {
         info,
-        algorithm: signing_alg_last_ar,
+        algorithm: signing_alg_last,
         signature,
     };
     Ok(c.to_vec().unwrap())

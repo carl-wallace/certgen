@@ -20,7 +20,7 @@ use pqcrypto_traits::sign::{PublicKey as OtherPublicKey, SecretKey};
 
 use const_oid::db::rfc5280::*;
 use der::asn1::{BitString, OctetString, OctetStringRef, UtcTime};
-use der::{Any, AnyRef, Decode, Encode, Result};
+use der::{Any, Decode, Encode, Result};
 
 use p256::ecdsa::{signature::Signer, Signature, SigningKey, VerifyingKey};
 use p256::elliptic_curve::sec1::{FromEncodedPoint, ToEncodedPoint};
@@ -39,7 +39,6 @@ use der::pem::LineEnding;
 use pqckeys::oak::OneAsymmetricKey;
 use pqckeys::pqc_oids::*;
 use pqcrypto_traits::sign::DetachedSignature;
-use spki::AlgorithmIdentifier;
 use x509_cert::crl::{CertificateList, TbsCertList};
 use x509_cert::ext::pkix::{AuthorityKeyIdentifier, BasicConstraints, KeyUsage, KeyUsages};
 use x509_cert::serial_number::SerialNumber;
@@ -576,12 +575,10 @@ pub fn generate_signed(
 
     let signature_alg =
         AlgorithmIdentifierOwned::from_der(cp.signing_algs.last().unwrap()).unwrap();
-    let signature_alg_ar =
-        AlgorithmIdentifier::<AnyRef<'_>>::from_der(cp.signing_algs.last().unwrap()).unwrap();
     let tbs_certificate = TbsCertificate {
         version: Version::V3,
         serial_number,
-        signature: signature_alg,
+        signature: signature_alg.clone(),
         issuer: issuer.clone(),
         validity,
         subject: subject.clone(),
@@ -599,8 +596,6 @@ pub fn generate_signed(
     let spki_alg1 = AlgorithmIdentifierOwned::from_der(&cp.spki_algs[0]).unwrap();
     let signing_alg_last =
         AlgorithmIdentifierOwned::from_der(cp.signing_algs.last().unwrap()).unwrap();
-    let signing_alg_last_ar =
-        AlgorithmIdentifier::<AnyRef<'_>>::from_der(cp.signing_algs.last().unwrap()).unwrap();
 
     let s = if cp.signing_keys.len() > 1 {
         let spki_alg2 = AlgorithmIdentifierOwned::from_der(&cp.spki_algs[1]).unwrap();
@@ -642,13 +637,13 @@ pub fn generate_signed(
 
     let c = Certificate {
         tbs_certificate,
-        signature_algorithm: signing_alg_last,
+        signature_algorithm: signing_alg_last.clone(),
         signature,
     };
 
     let tbs_crl = TbsCertList {
         version: Version::V3,
-        signature: signature_alg_ar,
+        signature: signature_alg,
         issuer: subject.clone(),
         this_update: validity.not_before,
         next_update: Some(validity.not_after),
@@ -702,7 +697,7 @@ pub fn generate_signed(
 
     let crl = CertificateList {
         tbs_cert_list: tbs_crl,
-        signature_algorithm: signing_alg_last_ar,
+        signature_algorithm: signing_alg_last,
         signature: signature_crl,
     };
 

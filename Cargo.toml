@@ -6,13 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-#x509-cert = { path = "../../junk/rust_change/formats-tmp/x509-cert", features = ["pem"] }
-#const-oid = { path = "../../junk/rust_change/formats-tmp/const-oid" }
-#der = { path = "../../junk/rust_change/formats-tmp/der" }
-#spki = { path = "../../junk/rust_change/formats-tmp/spki" }
-#pqckeys = { path = "../../junk/rust_change/formats-tmp/pqckeys" }
-#pem-rfc7468 = { path = "../../junk/rust_change/formats-tmp/pem-rfc7468" }
-
 x509-cert = { git = "https://github.com/carl-wallace/formats", branch = "pqc", features = ["pem"] }
 const-oid = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
 der = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
@@ -20,7 +13,7 @@ spki = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
 pqckeys = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
 pem-rfc7468 = { git = "https://github.com/carl-wallace/formats", branch = "pqc" }
 
-certval = { path = "../../junk/rust_change/rust-pki-tmp/certval"}
+certval = { git = "https://github.com/carl-wallace/rust-pki", features = ["std", "pqc"]}
 
 clap = {version = "3.0.7", default-features = false, features=["std", "derive"]}
 subtle-encoding = {version = "0.5", default-features = false, features = ["hex", "alloc"]}
