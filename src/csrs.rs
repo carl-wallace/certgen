@@ -28,11 +28,11 @@ pub fn generate_csr(
         oid: ID_EXTENSION_REQ,
         values: Default::default(),
     };
-    let er_attr_val = extensions.to_vec().unwrap();
+    let er_attr_val = extensions.to_der().unwrap();
     let _r = er_attr
         .values
-        .add(Any::from_der(er_attr_val.as_slice()).unwrap());
-    let _r = attributes.add(er_attr);
+        .insert(Any::from_der(er_attr_val.as_slice()).unwrap());
+    let _r = attributes.insert(er_attr);
 
     let info = CertReqInfo {
         version: x509_cert::request::Version::V1,
@@ -41,7 +41,7 @@ pub fn generate_csr(
         attributes,
     };
 
-    let tbs_cert = match info.to_vec() {
+    let tbs_cert = match info.to_der() {
         Ok(tbs_cert) => tbs_cert,
         Err(e) => return Err(e),
     };
@@ -67,7 +67,7 @@ pub fn generate_csr(
             BitString::from_bytes(s1.as_slice()).unwrap(),
             BitString::from_bytes(s2.as_slice()).unwrap(),
         ];
-        sig.to_vec().unwrap()
+        sig.to_der().unwrap()
     } else {
         generate_signature(
             &spki_alg1.oid,
@@ -82,5 +82,5 @@ pub fn generate_csr(
         algorithm: signing_alg_last,
         signature,
     };
-    Ok(c.to_vec().unwrap())
+    Ok(c.to_der().unwrap())
 }

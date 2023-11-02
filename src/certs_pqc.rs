@@ -62,83 +62,72 @@ pub fn is_ecdsa(oid: &ObjectIdentifier) -> bool {
         || *oid == PKIXALG_EC_PUBLIC_KEY
 }
 
-pub fn is_diluthium2(oid: &ObjectIdentifier) -> bool {
-    *oid == ENTU_DILITHIUM2 || *oid == OQ_DILITHIUM2
+pub fn is_ml_dsa_44_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == ML_DSA_44_IPD
+}
+pub fn is_ml_dsa_65_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == ML_DSA_65_IPD
 }
 
-pub fn is_diluthium3(oid: &ObjectIdentifier) -> bool {
-    *oid == ENTU_DILITHIUM3 || *oid == OQ_DILITHIUM3
-}
-
-pub fn is_diluthium5(oid: &ObjectIdentifier) -> bool {
-    *oid == ENTU_DILITHIUM5 || *oid == OQ_DILITHIUM5
-}
-pub fn is_diluthium2aes(oid: &ObjectIdentifier) -> bool {
-    *oid == ENTU_DILITHIUM_AES2 || *oid == OQ_DILITHIUM_AES2
-}
-
-pub fn is_diluthium3aes(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_DILITHIUM3 || *oid == ENTU_DILITHIUM_AES3 || *oid == OQ_DILITHIUM_AES3
-}
-
-pub fn is_diluthium5aes(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_DILITHIUM5 || *oid == ENTU_DILITHIUM_AES5 || *oid == OQ_DILITHIUM_AES5
+pub fn is_ml_dsa_87_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == ML_DSA_87_IPD
 }
 
 pub fn is_falcon512(oid: &ObjectIdentifier) -> bool {
-    *oid == ENTU_FALCON_512 || *oid == OQ_FALCON_512
+    *oid == OQ_FALCON_512
 }
 
 pub fn is_falcon1024(oid: &ObjectIdentifier) -> bool {
-    *oid == ENTU_FALCON_1024 || *oid == OQ_FALCON_1024
+    *oid == OQ_FALCON_1024
 }
 
-pub fn is_sphincsp_sha256_128f_robust(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_128F_ROBUST || *oid == ENTU_SPHINCSP_SHA256_128F_ROBUST
+pub fn is_slh_dsa_sha2_128f_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHA2_128F_IPD
 }
 
-pub fn is_sphincsp_sha256_128f_simple(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_128F_SIMPLE || *oid == ENTU_SPHINCSP_SHA256_128F_SIMPLE
+pub fn is_slh_dsa_sha2_128s_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHA2_128S_IPD
 }
 
-pub fn is_sphincsp_sha256_128s_robust(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_128S_ROBUST || *oid == ENTU_SPHINCSP_SHA256_128S_ROBUST
+pub fn is_slh_dsa_sha2_192f_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHA2_192F_IPD
 }
 
-pub fn is_sphincsp_sha256_128s_simple(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_128S_SIMPLE || *oid == ENTU_SPHINCSP_SHA256_128S_SIMPLE
+pub fn is_slh_dsa_sha2_192s_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHA2_192S_IPD
 }
 
-pub fn is_sphincsp_sha256_192f_robust(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_192F_ROBUST || *oid == ENTU_SPHINCSP_SHA256_192F_ROBUST
+pub fn is_slh_dsa_sha2_256f_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHA2_256F_IPD
 }
 
-pub fn is_sphincsp_sha256_192f_simple(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_192F_SIMPLE || *oid == ENTU_SPHINCSP_SHA256_192F_SIMPLE
+pub fn is_slh_dsa_sha2_256s_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHA2_256S_IPD
 }
 
-pub fn is_sphincsp_sha256_192s_robust(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_192S_ROBUST || *oid == ENTU_SPHINCSP_SHA256_192S_ROBUST
+#[cfg(feature = "pqc")]
+pub(crate) fn is_slh_dsa_shake_128f_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHAKE_128F_IPD
 }
-
-pub fn is_sphincsp_sha256_192s_simple(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_192S_SIMPLE || *oid == ENTU_SPHINCSP_SHA256_192S_SIMPLE
+#[cfg(feature = "pqc")]
+pub(crate) fn is_slh_dsa_shake_128s_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHAKE_128S_IPD
 }
-
-pub fn is_sphincsp_sha256_256f_robust(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_256F_ROBUST || *oid == ENTU_SPHINCSP_SHA256_256F_ROBUST
+#[cfg(feature = "pqc")]
+pub(crate) fn is_slh_dsa_shake_192f_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHAKE_192F_IPD
 }
-
-pub fn is_sphincsp_sha256_256f_simple(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_256F_SIMPLE || *oid == ENTU_SPHINCSP_SHA256_256F_SIMPLE
+#[cfg(feature = "pqc")]
+pub(crate) fn is_slh_dsa_shake_192s_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHAKE_192S_IPD
 }
-
-pub fn is_sphincsp_sha256_256s_robust(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_256S_ROBUST || *oid == ENTU_SPHINCSP_SHA256_256S_ROBUST
+#[cfg(feature = "pqc")]
+pub(crate) fn is_slh_dsa_shake_256f_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHAKE_256F_IPD
 }
-
-pub fn is_sphincsp_sha256_256s_simple(oid: &ObjectIdentifier) -> bool {
-    *oid == OQ_SPHINCSP_SHA256_256S_SIMPLE || *oid == ENTU_SPHINCSP_SHA256_256S_SIMPLE
+#[cfg(feature = "pqc")]
+pub(crate) fn is_slh_dsa_shake_256s_ipd(oid: &ObjectIdentifier) -> bool {
+    *oid == SLH_DSA_SHAKE_256S_IPD
 }
 
 #[derive(Clone, Debug, Eq, PartialEq)]
@@ -177,7 +166,7 @@ impl CompositeParts {
 pub fn calc_skid(spkibuf: &[u8]) -> Vec<u8> {
     let spki_hash = Sha1::digest(spkibuf).to_vec();
     let skid = OctetStringRef::new(spki_hash.as_slice()).unwrap();
-    skid.to_vec().unwrap()
+    skid.to_der().unwrap()
 }
 
 pub fn generate_keypair(
@@ -193,15 +182,15 @@ pub fn generate_keypair(
         oid: sig_alg1,
         parameters: None,
     };
-    signing_algs.push(signature_algorithm.to_vec().unwrap());
+    signing_algs.push(signature_algorithm.to_der().unwrap());
 
     if is_ecdsa(&sig_alg1) {
-        let x = pk_alg1.to_vec().unwrap();
+        let x = pk_alg1.to_der().unwrap();
         let spki_algorithm = AlgorithmIdentifierOwned {
             oid: PKIXALG_EC_PUBLIC_KEY,
             parameters: Some(Any::from_der(x.as_slice()).unwrap()),
         };
-        spki_algs.push(spki_algorithm.to_vec().unwrap());
+        spki_algs.push(spki_algorithm.to_der().unwrap());
 
         if pk_alg1 == PKIXALG_SECP256R1 {
             let signing_key = SigningKey::random(&mut OsRng); // Serialize with `::to_bytes()`
@@ -219,33 +208,24 @@ pub fn generate_keypair(
                 algorithm: spki_algorithm,
                 subject_public_key: BitString::from_bytes(spkibuf).unwrap(),
             };
-            spkis.push(spki.to_vec().unwrap());
+            spkis.push(spki.to_der().unwrap());
         }
     } else {
         let spki_algorithm = AlgorithmIdentifierOwned {
             oid: pk_alg1,
             parameters: None,
         };
-        spki_algs.push(spki_algorithm.to_vec().unwrap());
+        spki_algs.push(spki_algorithm.to_der().unwrap());
 
         #[cfg(feature = "pqc")]
-        let (pk, sk) = if is_diluthium2(&pk_alg1) {
+        let (pk, sk) = if is_ml_dsa_44_ipd(&pk_alg1) {
             let (pk, sk) = dilithium2::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_diluthium3(&pk_alg1) {
+        } else if is_ml_dsa_65_ipd(&pk_alg1) {
             let (pk, sk) = dilithium3::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_diluthium5(&pk_alg1) {
+        } else if is_ml_dsa_87_ipd(&pk_alg1) {
             let (pk, sk) = dilithium5::keypair();
-            (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_diluthium2aes(&pk_alg1) {
-            let (pk, sk) = dilithium2aes::keypair();
-            (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_diluthium3aes(&pk_alg1) {
-            let (pk, sk) = dilithium3aes::keypair();
-            (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_diluthium5aes(&pk_alg1) {
-            let (pk, sk) = dilithium5aes::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
         } else if is_falcon512(&pk_alg1) {
             let (pk, sk) = falcon512::keypair();
@@ -253,41 +233,41 @@ pub fn generate_keypair(
         } else if is_falcon1024(&pk_alg1) {
             let (pk, sk) = falcon1024::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_128f_robust(&pk_alg1) {
-            let (pk, sk) = sphincssha256128frobust::keypair();
+        } else if is_slh_dsa_sha2_128f_ipd(&pk_alg1) {
+            let (pk, sk) = sphincssha2128fsimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_128f_simple(&pk_alg1) {
-            let (pk, sk) = sphincssha256128fsimple::keypair();
+        } else if is_slh_dsa_sha2_128s_ipd(&pk_alg1) {
+            let (pk, sk) = sphincssha2128ssimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_128s_robust(&pk_alg1) {
-            let (pk, sk) = sphincssha256128srobust::keypair();
+        } else if is_slh_dsa_sha2_192f_ipd(&pk_alg1) {
+            let (pk, sk) = sphincssha2192fsimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_128s_simple(&pk_alg1) {
-            let (pk, sk) = sphincssha256128ssimple::keypair();
+        } else if is_slh_dsa_sha2_192s_ipd(&pk_alg1) {
+            let (pk, sk) = sphincssha2192ssimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_192f_robust(&pk_alg1) {
-            let (pk, sk) = sphincssha256192frobust::keypair();
+        } else if is_slh_dsa_sha2_256f_ipd(&pk_alg1) {
+            let (pk, sk) = sphincssha2256fsimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_192f_simple(&pk_alg1) {
-            let (pk, sk) = sphincssha256192fsimple::keypair();
+        } else if is_slh_dsa_sha2_256s_ipd(&pk_alg1) {
+            let (pk, sk) = sphincssha2256ssimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_192s_robust(&pk_alg1) {
-            let (pk, sk) = sphincssha256192srobust::keypair();
+        } else if is_slh_dsa_shake_128f_ipd(&pk_alg1) {
+            let (pk, sk) = sphincsshake128fsimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_192s_simple(&pk_alg1) {
-            let (pk, sk) = sphincssha256192ssimple::keypair();
+        } else if is_slh_dsa_shake_128s_ipd(&pk_alg1) {
+            let (pk, sk) = sphincsshake128ssimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_256f_robust(&pk_alg1) {
-            let (pk, sk) = sphincssha256256frobust::keypair();
+        } else if is_slh_dsa_shake_192f_ipd(&pk_alg1) {
+            let (pk, sk) = sphincsshake192fsimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_256f_simple(&pk_alg1) {
-            let (pk, sk) = sphincssha256256fsimple::keypair();
+        } else if is_slh_dsa_shake_192s_ipd(&pk_alg1) {
+            let (pk, sk) = sphincsshake192ssimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_256s_robust(&pk_alg1) {
-            let (pk, sk) = sphincssha256256srobust::keypair();
+        } else if is_slh_dsa_shake_256f_ipd(&pk_alg1) {
+            let (pk, sk) = sphincsshake256fsimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
-        } else if is_sphincsp_sha256_256s_simple(&pk_alg1) {
-            let (pk, sk) = sphincssha256256ssimple::keypair();
+        } else if is_slh_dsa_shake_256s_ipd(&pk_alg1) {
+            let (pk, sk) = sphincsshake256ssimple::keypair();
             (pk.as_bytes().to_vec(), sk.as_bytes().to_vec())
         } else {
             panic!()
@@ -302,7 +282,7 @@ pub fn generate_keypair(
             algorithm: spki_algorithm,
             subject_public_key: BitString::from_bytes(spkibuf).unwrap(),
         };
-        spkis.push(spki.to_vec().unwrap());
+        spkis.push(spki.to_der().unwrap());
     }
 }
 
@@ -394,14 +374,14 @@ pub fn generate_keypairs(args: &CertGenArgs) -> CompositeParts {
             spki.push(s);
         }
 
-        let enc_spki = spki.to_vec().unwrap();
+        let enc_spki = spki.to_der().unwrap();
         let spki = SubjectPublicKeyInfoOwned {
             algorithm: spki_algorithm.clone(),
             subject_public_key: BitString::from_bytes(enc_spki.as_slice()).unwrap(),
         };
-        let enc_cspki = spki.to_vec().unwrap();
+        let enc_cspki = spki.to_der().unwrap();
         cp.spkis.push(enc_cspki);
-        cp.spki_algs.push(spki_algorithm.to_vec().unwrap());
+        cp.spki_algs.push(spki_algorithm.to_der().unwrap());
 
         let spki_alg1 = AlgorithmIdentifierOwned::from_der(&cp.signing_algs[0]).unwrap();
         let spki_alg2 = AlgorithmIdentifierOwned::from_der(&cp.signing_algs[1]).unwrap();
@@ -416,14 +396,14 @@ pub fn generate_keypairs(args: &CertGenArgs) -> CompositeParts {
             params.push(s);
         }
 
-        let enc_params = params.to_vec().unwrap();
+        let enc_params = params.to_der().unwrap();
 
         //only doing ECDSA and Diluthium3 for the moment
         let signing_algorithm = AlgorithmIdentifierOwned {
             oid: s_alg,
             parameters: Some(Any::from_der(enc_params.as_slice()).unwrap()),
         };
-        cp.signing_algs.push(signing_algorithm.to_vec().unwrap());
+        cp.signing_algs.push(signing_algorithm.to_der().unwrap());
     }
 
     cp
@@ -434,29 +414,17 @@ pub fn generate_signature(
     signing_key_bytes: &[u8],
     tbs_cert: &[u8],
 ) -> Vec<u8> {
-    let s = if is_diluthium2(spki_algorithm) {
+    let s = if is_ml_dsa_44_ipd(spki_algorithm) {
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
         let sm = dilithium2::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_diluthium3(spki_algorithm) {
+    } else if is_ml_dsa_65_ipd(spki_algorithm) {
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
         let sm = dilithium3::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_diluthium5(spki_algorithm) {
+    } else if is_ml_dsa_87_ipd(spki_algorithm) {
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
         let sm = dilithium5::detached_sign(tbs_cert, &sk);
-        sm.as_bytes().to_vec()
-    } else if is_diluthium2aes(spki_algorithm) {
-        let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = dilithium2aes::detached_sign(tbs_cert, &sk);
-        sm.as_bytes().to_vec()
-    } else if is_diluthium3aes(spki_algorithm) {
-        let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = dilithium3aes::detached_sign(tbs_cert, &sk);
-        sm.as_bytes().to_vec()
-    } else if is_diluthium5aes(spki_algorithm) {
-        let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = dilithium5aes::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
     } else if is_falcon512(spki_algorithm) {
         // let (pk, sk) = falcon512::keypair();
@@ -468,65 +436,65 @@ pub fn generate_signature(
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
         let sm = falcon1024::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_128f_robust(spki_algorithm) {
-        // let (pk, sk) = sphincssha256128frobust::keypair();
+    } else if is_slh_dsa_sha2_128f_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincssha2128fsimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256128frobust::detached_sign(tbs_cert, &sk);
+        let sm = sphincssha2128fsimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_128f_simple(spki_algorithm) {
-        // let (pk, sk) = sphincssha256128fsimple::keypair();
+    } else if is_slh_dsa_sha2_128s_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincssha2128ssimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256128fsimple::detached_sign(tbs_cert, &sk);
+        let sm = sphincssha2128ssimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_128s_robust(spki_algorithm) {
-        // let (pk, sk) = sphincssha256128srobust::keypair();
+    } else if is_slh_dsa_sha2_192f_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincssha2192fsimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256128srobust::detached_sign(tbs_cert, &sk);
+        let sm = sphincssha2192fsimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_128s_simple(spki_algorithm) {
-        // let (pk, sk) = sphincssha256128ssimple::keypair();
+    } else if is_slh_dsa_sha2_192s_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincssha2192ssimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256128ssimple::detached_sign(tbs_cert, &sk);
+        let sm = sphincssha2192ssimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_192f_robust(spki_algorithm) {
-        // let (pk, sk) = sphincssha256192frobust::keypair();
+    } else if is_slh_dsa_sha2_256f_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincssha2256fsimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256192frobust::detached_sign(tbs_cert, &sk);
+        let sm = sphincssha2256fsimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_192f_simple(spki_algorithm) {
-        // let (pk, sk) = sphincssha256192fsimple::keypair();
+    } else if is_slh_dsa_sha2_256s_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincssha2256ssimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256192fsimple::detached_sign(tbs_cert, &sk);
+        let sm = sphincssha2256ssimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_192s_robust(spki_algorithm) {
-        // let (pk, sk) = sphincssha256192srobust::keypair();
+    } else if is_slh_dsa_shake_128f_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincsshake128fsimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256192srobust::detached_sign(tbs_cert, &sk);
+        let sm = sphincsshake128fsimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_192s_simple(spki_algorithm) {
-        // let (pk, sk) = sphincssha256192ssimple::keypair();
+    } else if is_slh_dsa_shake_128s_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincsshake128ssimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256192ssimple::detached_sign(tbs_cert, &sk);
+        let sm = sphincsshake128ssimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_256f_robust(spki_algorithm) {
-        // let (pk, sk) = sphincssha256256frobust::keypair();
+    } else if is_slh_dsa_shake_192f_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincsshake192fsimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256256frobust::detached_sign(tbs_cert, &sk);
+        let sm = sphincsshake192fsimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_256f_simple(spki_algorithm) {
-        // let (pk, sk) = sphincssha256256fsimple::keypair();
+    } else if is_slh_dsa_shake_192s_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincsshake192ssimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256256fsimple::detached_sign(tbs_cert, &sk);
+        let sm = sphincsshake192ssimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_256s_robust(spki_algorithm) {
-        // let (pk, sk) = sphincssha256256srobust::keypair();
+    } else if is_slh_dsa_shake_256f_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincsshake256fsimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256256srobust::detached_sign(tbs_cert, &sk);
+        let sm = sphincsshake256fsimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
-    } else if is_sphincsp_sha256_256s_simple(spki_algorithm) {
-        // let (pk, sk) = sphincssha256256ssimple::keypair();
+    } else if is_slh_dsa_shake_256s_ipd(spki_algorithm) {
+        // let (pk, sk) = sphincsshake256ssimple::keypair();
         let sk = SecretKey::from_bytes(signing_key_bytes).unwrap();
-        let sm = sphincssha256256ssimple::detached_sign(tbs_cert, &sk);
+        let sm = sphincsshake256ssimple::detached_sign(tbs_cert, &sk);
         sm.as_bytes().to_vec()
     } else if is_ecdsa(spki_algorithm) {
         let signing_key = SigningKey::from_bytes(signing_key_bytes).unwrap();
@@ -588,7 +556,7 @@ pub fn generate_signed(
         extensions,
     };
 
-    let tbs_cert = match tbs_certificate.to_vec() {
+    let tbs_cert = match tbs_certificate.to_der() {
         Ok(tbs_cert) => tbs_cert,
         Err(e) => return Err(e),
     };
@@ -624,7 +592,7 @@ pub fn generate_signed(
             );
             sig.push(BitString::from_bytes(s3.as_slice()).unwrap());
         }
-        sig.to_vec().unwrap()
+        sig.to_der().unwrap()
     } else {
         generate_signature(
             &spki_alg1.oid,
@@ -651,7 +619,7 @@ pub fn generate_signed(
         crl_extensions: None,
     };
 
-    let tbs_cert_list = match tbs_crl.to_vec() {
+    let tbs_cert_list = match tbs_crl.to_der() {
         Ok(tbs_cert) => tbs_cert,
         Err(e) => return Err(e),
     };
@@ -685,7 +653,7 @@ pub fn generate_signed(
             sig.push(BitString::from_bytes(s3.as_slice()).unwrap());
         }
 
-        sig.to_vec().unwrap()
+        sig.to_der().unwrap()
     } else {
         generate_signature(
             &spki_alg1.oid,
@@ -701,7 +669,7 @@ pub fn generate_signed(
         signature: signature_crl,
     };
 
-    Ok((c.to_vec().unwrap(), crl.to_vec().unwrap()))
+    Ok((c.to_der().unwrap(), crl.to_der().unwrap()))
 }
 
 pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
@@ -725,14 +693,14 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
 
     // key usage, basic constraints, eku
     let ku = KeyUsage(KeyUsages::NonRepudiation | KeyUsages::DigitalSignature);
-    let enc_ku = ku.to_vec().unwrap();
+    let enc_ku = ku.to_der().unwrap();
     let eku = vec![ID_KP_CLIENT_AUTH];
-    let enc_eku = eku.to_vec().unwrap();
+    let enc_eku = eku.to_der().unwrap();
     let bc = BasicConstraints {
         ca: false,
         path_len_constraint: None,
     };
-    let enc_bc = bc.to_vec().unwrap();
+    let enc_bc = bc.to_der().unwrap();
 
     let ext2 = Extension {
         extn_id: ID_CE_SUBJECT_KEY_IDENTIFIER,
@@ -808,7 +776,7 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
                 public_key: None,
             };
             let oaks = vec![oak_leaf, oak_leaf2];
-            oaks.to_vec().unwrap()
+            oaks.to_der().unwrap()
         } else {
             let private_key_alg = AlgorithmIdentifierOwned::from_der(&cp.signing_algs[0]).unwrap();
             let oak_leaf = OneAsymmetricKey {
@@ -818,7 +786,7 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
                 attributes: None,
                 public_key: None,
             };
-            oak_leaf.to_vec().unwrap()
+            oak_leaf.to_der().unwrap()
         };
 
         if let Some(folder) = &args.self_signed_certs_folder {
@@ -826,7 +794,7 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
             //TODO temp
             //let f = p.join(Path::new(format!("{}_{}.der", name, iteration).as_str()));
             let f = p.join(Path::new("cert.der"));
-            match fs::write(&f, &enc_sscert) {
+            match fs::write(f, &enc_sscert) {
                 Ok(_) => {}
                 Err(e) => {
                     println!(
@@ -840,7 +808,7 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
                 pem_rfc7468::encode_string(label, LineEnding::LF, enc_sscert.as_slice()).unwrap();
             let p = Path::new(folder.as_str());
             let f = p.join(Path::new("cert.pem"));
-            match fs::write(&f, encoded) {
+            match fs::write(f, encoded) {
                 Ok(_) => {}
                 Err(e) => {
                     println!(
@@ -851,8 +819,8 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
             }
             let p = Path::new(folder.as_str());
             //let f = p.join(Path::new(format!("{}_{}.oak", name, iteration).as_str()));
-            let f = p.join(Path::new("cert_priv.der"));
-            match fs::write(&f, &enc_oak_leaf) {
+            let f = p.join(Path::new("cert_priv.oak"));
+            match fs::write(f, &enc_oak_leaf) {
                 Ok(_) => {}
                 Err(e) => {
                     println!(
@@ -866,7 +834,7 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
                 pem_rfc7468::encode_string(label, LineEnding::LF, enc_oak_leaf.as_slice()).unwrap();
             let p = Path::new(folder.as_str());
             let f = p.join(Path::new("cert_priv.pem"));
-            match fs::write(&f, encoded) {
+            match fs::write(f, encoded) {
                 Ok(_) => {}
                 Err(e) => {
                     println!(
@@ -897,7 +865,7 @@ pub fn generate_leaf_cert(args: &CertGenArgs, cap: &Vec<CompanyAndProducts>) {
             let p = Path::new(folder.as_str());
             //let f = p.join(Path::new(format!("{}.csr", iteration).as_str()));
             let f = p.join(Path::new("cert.csr"));
-            match fs::write(&f, enc_req) {
+            match fs::write(f, enc_req) {
                 Ok(_) => {}
                 Err(e) => {
                     println!(
@@ -927,13 +895,13 @@ pub fn generate_ca_cert(
 
     // key usage, basic constraints, eku
     let ku = KeyUsage(KeyUsages::KeyCertSign | KeyUsages::CRLSign | KeyUsages::DigitalSignature);
-    let enc_ku = ku.to_vec().unwrap();
+    let enc_ku = ku.to_der().unwrap();
 
     let bc = BasicConstraints {
         ca: true,
         path_len_constraint: None,
     };
-    let enc_bc = bc.to_vec().unwrap();
+    let enc_bc = bc.to_der().unwrap();
     let ext2 = Extension {
         extn_id: ID_CE_SUBJECT_KEY_IDENTIFIER,
         critical: false,
@@ -983,13 +951,13 @@ pub fn generate_root_cert(
 
     // key usage, basic constraints, eku
     let ku = KeyUsage(KeyUsages::KeyCertSign | KeyUsages::CRLSign | KeyUsages::DigitalSignature);
-    let enc_ku = ku.to_vec().unwrap();
+    let enc_ku = ku.to_der().unwrap();
 
     let bc = BasicConstraints {
         ca: true,
         path_len_constraint: None,
     };
-    let enc_bc = bc.to_vec().unwrap();
+    let enc_bc = bc.to_der().unwrap();
     let ext2 = Extension {
         extn_id: ID_CE_SUBJECT_KEY_IDENTIFIER,
         critical: false,
@@ -1029,6 +997,6 @@ pub fn generate_root_cert(
         authority_cert_serial_number: None,
     };
 
-    let enc_akid = akid.to_vec().unwrap();
+    let enc_akid = akid.to_der().unwrap();
     (cp, enc_sscert, enc_crl, enc_akid)
 }

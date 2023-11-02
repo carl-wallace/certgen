@@ -94,7 +94,7 @@ pub fn gen_companies_and_products(
             if let Some(folder) = &args.self_signed_certs_folder {
                 let p = Path::new(folder.as_str());
                 let f = p.join(Path::new(format!("{}_ta.der", name).as_str()));
-                match fs::write(&f, root_cert) {
+                match fs::write(f, root_cert) {
                     Ok(_) => {}
                     Err(e) => {
                         println!(
@@ -105,7 +105,7 @@ pub fn gen_companies_and_products(
                 }
                 let p = Path::new(folder.as_str());
                 let f = p.join(Path::new(format!("{}_ta.crl", name).as_str()));
-                match fs::write(&f, root_crl) {
+                match fs::write(f, root_crl) {
                     Ok(_) => {}
                     Err(e) => {
                         println!(
@@ -130,7 +130,7 @@ pub fn gen_companies_and_products(
                 if let Some(folder) = &args.self_signed_certs_folder {
                     let p = Path::new(folder.as_str());
                     let f = p.join(Path::new(format!("{}_ca.der", name).as_str()));
-                    match fs::write(&f, ca_cert) {
+                    match fs::write(f, ca_cert) {
                         Ok(_) => {}
                         Err(e) => {
                             println!(
@@ -141,7 +141,7 @@ pub fn gen_companies_and_products(
                     }
                     let p = Path::new(folder.as_str());
                     let f = p.join(Path::new(format!("{}_ca.crl", name).as_str()));
-                    match fs::write(&f, ca_crl) {
+                    match fs::write(f, ca_crl) {
                         Ok(_) => {}
                         Err(e) => {
                             println!(
@@ -195,7 +195,7 @@ pub fn generate_shared_ca_and_ta(
             public_key: None,
         };
         let oaks = vec![oak_leaf, oak_leaf2];
-        oaks.to_vec().unwrap()
+        oaks.to_der().unwrap()
     } else {
         let oak_ta = OneAsymmetricKey {
             version: Version::V2,
@@ -204,7 +204,7 @@ pub fn generate_shared_ca_and_ta(
             attributes: None,
             public_key: None,
         };
-        oak_ta.to_vec().unwrap()
+        oak_ta.to_der().unwrap()
     };
 
     let enc_ca_dn = encode_dn_from_string(args.shared_ca_name.as_str()).unwrap();
@@ -234,7 +234,7 @@ pub fn generate_shared_ca_and_ta(
             public_key: None,
         };
         let oaks = vec![oak_leaf, oak_leaf2];
-        oaks.to_vec().unwrap()
+        oaks.to_der().unwrap()
     } else {
         let oak_ta = OneAsymmetricKey {
             version: Version::V2,
@@ -243,13 +243,13 @@ pub fn generate_shared_ca_and_ta(
             attributes: None,
             public_key: None,
         };
-        oak_ta.to_vec().unwrap()
+        oak_ta.to_der().unwrap()
     };
 
     if let Some(folder) = &args.self_signed_certs_folder {
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ta.der"));
-        match fs::write(&f, &shared_root_cert) {
+        match fs::write(f, &shared_root_cert) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -263,7 +263,7 @@ pub fn generate_shared_ca_and_ta(
             pem_rfc7468::encode_string(label, LineEnding::LF, shared_root_cert.as_slice()).unwrap();
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ta.pem"));
-        match fs::write(&f, encoded) {
+        match fs::write(f, encoded) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -274,7 +274,7 @@ pub fn generate_shared_ca_and_ta(
         }
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ta.oak"));
-        match fs::write(&f, &enc_oak_ta) {
+        match fs::write(f, &enc_oak_ta) {
             Ok(_) => {}
             Err(e) => {
                 println!("Failed to write TA signing key to {:?} with error:", e);
@@ -285,7 +285,7 @@ pub fn generate_shared_ca_and_ta(
             pem_rfc7468::encode_string(label, LineEnding::LF, enc_oak_ta.as_slice()).unwrap();
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("ta_priv.pem"));
-        match fs::write(&f, encoded) {
+        match fs::write(f, encoded) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -296,7 +296,7 @@ pub fn generate_shared_ca_and_ta(
         }
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ta.crl"));
-        match fs::write(&f, shared_root_crl) {
+        match fs::write(f, shared_root_crl) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -307,7 +307,7 @@ pub fn generate_shared_ca_and_ta(
         }
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ca.der"));
-        match fs::write(&f, &shared_ca_cert) {
+        match fs::write(f, &shared_ca_cert) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -320,7 +320,7 @@ pub fn generate_shared_ca_and_ta(
             pem_rfc7468::encode_string(label, LineEnding::LF, shared_ca_cert.as_slice()).unwrap();
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ca.pem"));
-        match fs::write(&f, encoded) {
+        match fs::write(f, encoded) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -331,7 +331,7 @@ pub fn generate_shared_ca_and_ta(
         }
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ca.oak"));
-        match fs::write(&f, &enc_oak_ca) {
+        match fs::write(f, &enc_oak_ca) {
             Ok(_) => {}
             Err(e) => {
                 println!("Failed to write CA signing key to {:?} with error:", e);
@@ -342,7 +342,7 @@ pub fn generate_shared_ca_and_ta(
             pem_rfc7468::encode_string(label, LineEnding::LF, enc_oak_ca.as_slice()).unwrap();
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ca_priv.pem"));
-        match fs::write(&f, encoded) {
+        match fs::write(f, encoded) {
             Ok(_) => {}
             Err(e) => {
                 println!(
@@ -353,7 +353,7 @@ pub fn generate_shared_ca_and_ta(
         }
         let p = Path::new(folder.as_str());
         let f = p.join(Path::new("shared_ca.crl"));
-        match fs::write(&f, shared_ca_crl) {
+        match fs::write(f, shared_ca_crl) {
             Ok(_) => {}
             Err(e) => {
                 println!(

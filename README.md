@@ -18,7 +18,7 @@ If the binaries are located elsewhere edit lines 35 and/or 36 the script accordi
 To generate artifacts, run the script with no parameters. A folder named `artifacts` will be generated and populated. To verify artifacts,
 run the script with the path to the folder containing the artifacts as a parameter. Note, pittv3 will attempt to verify all
 files with a .der extension in the artifacts folder. Unfortunately, the naming scheme features private key files named
-with .der. For best results, delete files with "_priv.der" or "_priv.pem" before validating a folder containing artifacts.
+with .der. For best results, delete files with "_priv.oak" or "_priv.pem" before validating a folder containing artifacts.
 
 The default `log.yaml` file writes a large volume of data to the console. Edit it to avoid this. See [log4rs](https://docs.rs/log4rs/1.2.0/log4rs/)
 documentation for details on the file format.

@@ -14,11 +14,11 @@ create_folder_and_move_files() {
 	mv $certs_folder/shared_ta.crl $target_folder/crl/crl_ta.crl
 	mv $certs_folder/shared_ca.crl $target_folder/crl/crl_ca.crl
 	mv $certs_folder/shared_ta.der $target_folder/ta/ta.der
-	mv $certs_folder/shared_ta.oak $target_folder/ta/ta_priv.der
+	mv $certs_folder/shared_ta.oak $target_folder/ta/ta_priv.oak
 	mv $certs_folder/shared_ca.der $target_folder/ca/ca.der
-	mv $certs_folder/shared_ca.oak $target_folder/ca/ca_priv.der
+	mv $certs_folder/shared_ca.oak $target_folder/ca/ca_priv.oak
 	mv $certs_folder/cert.der $target_folder/ee/cert.der 
-	mv $certs_folder/cert_priv.der $target_folder/ee/cert_priv.der  
+	mv $certs_folder/cert_priv.oak $target_folder/ee/cert_priv.oak
 	mv $csrs_folder/cert.csr $target_folder/ee/cert.csr  
 	mv $certs_folder/shared_ta.pem $target_folder/ta/ta.pem
 	mv $certs_folder/ta_priv.pem $target_folder/ta/ta_priv.pem
